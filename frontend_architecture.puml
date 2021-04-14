@@ -1,27 +1,50 @@
 @startuml
-node "React app" {
-    node "Atoms" as atoms {
-        package "Buttons" {
-            [Button] as button
-            [Discrete Button] as discreteButton
-            [Mood Button] as moodButton
-        }
-        [Textfield] as textfield
-        [Icon] as icon
+node "Atoms" {
+    package "Buttons" {
+        [Button]
+        [Cta Button]
+        [Mood Button]
     }
-    
-    node "Molecules" as molecules {
-        [Card] as card
+    package "Headings" {
+        [PrimaryHeading]
+        [SecondaryHeading]
     }
+    [Tag]
+    [Textfield]
+    [DatePicker]
+    [Icon]
+}
 
-    node "Organisms" as organisms {
+node "Molecules" {
+    [Card]
+    [CircularProgressBar]
+}
 
+node "Organisms" {
+    package "Modals" {
+        [ReportMoodModal]
     }
+    package "Cards" {
+        [ProfileCard]
+        [WelcomeCard]
+        [StatisticsCard]
+    }
+}
 
-    node "Pages" as pages {
-        [Start] as start
-        [Panel] as panel
-        [Statistics] as statistics
-    }
+node "Pages" {
+    [Start]
+    [Panel]
+    [Statistics]
+}
+
+node "Sass" {
+    [Colors]
+    [Grid]
+    [Mixins]
+    [Reset]
+}
+
+node "API" {
+    [BeeWell]
 }
 @enduml
