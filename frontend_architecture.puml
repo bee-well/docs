@@ -1,0 +1,27 @@
+@startuml
+node "React app" {
+    node "Atoms" as atoms {
+        package "Buttons" {
+            [Button] as button
+            [Discrete Button] as discreteButton
+            [Mood Button] as moodButton
+        }
+        [Textfield] as textfield
+        [Icon] as icon
+    }
+    
+    node "Molecules" as molecules {
+        [Card] as card
+    }
+
+    node "Organisms" as organisms {
+
+    }
+
+    node "Pages" as pages {
+        [Start] as start
+        [Panel] as panel
+        [Statistics] as statistics
+    }
+}
+@enduml
