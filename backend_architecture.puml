@@ -1,0 +1,75 @@
+@startuml
+left to right direction
+package "Authorization" as authNode {
+    package "domain" as authDomain {
+        [User]
+        [Token]
+    }
+    package "repositories" as authRepos {
+        [UserRepository]
+    }
+    package "services" as authServices {
+        [SignInService]
+        [SignOutService]
+        [TokenGenerationService]
+    }
+    package "controllers" as authControllers {
+        [SignInController]
+        [SignOutController]
+        [UserController]
+    }
+}
+
+note top of authNode 
+This part of the backend is only responsible for
+authenticating user credentials and generating
+access tokens if the user is authenticated.
+end note
+
+package "Mood" as moodNode {
+    package "domain" as moodDomain {
+        [Mood]
+    }
+    package "repositories" as moodRepos {
+        [MoodRepository]
+    }
+    package "services" as moodServices {
+        [MoodReportService]
+    }
+    package "controllers" as moodControllers {
+        [MoodReportController]
+    }
+}
+
+note top of moodNode 
+The MoodNode collects and stores data regarding
+the users mood. Once a mood has been reported to
+this node, it should send a notification to the
+statistics node where it can be properly processed
+on demand.
+end note
+
+package "Statistics" as statisticsNode {
+    package "domain" as statisticsDomain {
+        [MoodData]
+    }
+    package "repositories" as statisticsRepos {
+        [MoodDataRepository]
+    }
+    package "services" as statisticsServices {
+        [MoodDataCompilationService]
+    }
+    package "controllers" as statisticsControllers {
+        [MoodDataCompilationController]
+    }
+}
+
+note bottom of statisticsNode 
+Statistics node covers the heavy lifting of 
+the backend. It takes a timespan and compiles
+mood data for a given user for all data that
+has been reported within that timespan. 
+end note
+
+moodNode -[hidden]-> statisticsNode
+@enduml
