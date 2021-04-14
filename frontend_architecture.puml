@@ -18,6 +18,7 @@ node "Atoms" {
 node "Molecules" {
     [Card]
     [CircularProgressBar]
+    [Graph]
 }
 
 node "Organisms" {
