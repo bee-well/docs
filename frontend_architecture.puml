@@ -19,16 +19,24 @@ node "Molecules" {
     [Card]
     [CircularProgressBar]
     [Graph]
+    [Modal]
 }
 
 node "Organisms" {
     package "Modals" {
         [ReportMoodModal]
+        [SignUpModal]
+        [SignInModal]
     }
     package "Cards" {
         [ProfileCard]
         [WelcomeCard]
-        [StatisticsCard]
+        [OverviewCard]
+        [ReportCard]
+        [FilterCard]
+        [BestDayCard]
+        [BestHourCard]
+        [ReportAmountCard]
     }
 }
 
